@@ -6,7 +6,8 @@ const ChildMonster = require('./ChildMonster')
 let nbOfMonsters = 0
 
 const player = new Player()
-
+let nbOfMonstersKill = 0
+let nbOfChildMonstersKill = 0
 while (player.health > 0)
 {
     nbOfMonsters++
@@ -30,16 +31,18 @@ while (player.health > 0)
         else
         {
             console.log('\tThe monster died !')
+            monster instanceof Monster ? nbOfMonstersKill++ : nbOfChildMonstersKill++
         }
     }
-    
-    if (player.health <= 0)
+
+    if (player.health > 0)
     {
-        console.log('\n The player died...\n')
+        console.log('\nPlayer has : ' + player.health + ' hp left' + '\n')
     }
     else
     {
-        console.log('\nPlayer has : ' + player.health + ' hp left' + '\n')
+        console.log('\n The player died...')
+        console.log(`He killed ${nbOfMonstersKill} monsters and ${nbOfChildMonstersKill} child monsters`)
     }
 }
 
